@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Prüfziffer Generator</title>
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div id="page">
+        <header>
+            <div id="header-links"><h1>Ametras</h1></div>
+            <div id="header-rechts"><h3>Prüfziffer Generator</h3></div>
+        </header>
+        <div id="content">
+            <div id="input-form-div">
+                <form id="input-form" method="post" action="/api/endpoint">
+                    <input typw="text" name="input" placeholder="String to convert">
+                    <input type="submit" name="convert" value="convert">
+                </form>
+            </div>
+            <div id="past-conversion">
+                <div id="table-div">
+                    {% if last_conversion != None %}
+                    <table>
+                        <tr class="a">
+                            <td>ID</td>
+                            <td>Input</td>
+                            <td>Result</td>
+                        </tr>
+                        {% for row in last_conversion %}
+                            <tr>
+                                {% for element in row %}
+                                    <td>{{ element }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        <footer> designed and developed by Korbinian Müller</footer>
+    </div>
+</body>
+</html>
